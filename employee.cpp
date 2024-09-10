@@ -2,7 +2,6 @@
 #include <iostream>
 #include <fstream>
 #include <cstring>
-#pragma warning(disable : 4996)
 using namespace std;
 
 void loadFromFile(Employee*& employees, int& employeeCount) {
@@ -29,7 +28,8 @@ void loadFromFile(Employee*& employees, int& employeeCount) {
         inFile.ignore();
     }
     inFile.close();
-    cout << "Информация успешно загружена";
+    cout << "Информация успешно загружена" << endl;
+    cout << endl;
 }
 
 void saveToFile(Employee* employees, int employeeCount) {
@@ -49,18 +49,20 @@ void saveToFile(Employee* employees, int employeeCount) {
     }
 
     outFile.close();
-    cout << "Информация успешно загружена";
+    cout << "Информация успешно загружена" << endl;
+    cout << endl;
 }
 
 void displayEmployees(Employee* employees, int employeeCount) {
     for (int i = 0; i < employeeCount; i++) {
-        cout << "Сотрудник " << i + 1 << ":" << endl;
+        cout << "Сотрудник " << i + 1 << endl;
         cout << "Фамилия: " << employees[i].surname << endl;
         cout << "Имя: " << employees[i].name << endl;
         cout << "Номер Телефона: " << employees[i].phone << endl;
         cout << "Зарплата: " << employees[i].salary << endl;
         cout << "--------------------------" << endl;
     }
+    cout << endl;
 }
 
 void searchByLastName(Employee* employees, int employeeCount, const char* lastName) {
@@ -78,9 +80,11 @@ void searchByLastName(Employee* employees, int employeeCount, const char* lastNa
     if (!found) {
         cout << "Сотрудние не найден." << endl;
     }
+    cout << endl;
 }
 
 void searchBySalaryRange(Employee* employees, int employeeCount, double minSalary, double maxSalary) {
+    cout << endl;
     bool found = false;
     for (int i = 0; i < employeeCount; i++) {
         if (employees[i].salary >= minSalary && employees[i].salary <= maxSalary) {
@@ -95,6 +99,7 @@ void searchBySalaryRange(Employee* employees, int employeeCount, double minSalar
     if (!found) {
         cout << "Сотрудников в указанном диапазоне зарплат не найдено." << endl;
     }
+    cout << endl;
 }
 
 void sortByLastName(Employee* employees, int employeeCount) {
@@ -106,6 +111,7 @@ void sortByLastName(Employee* employees, int employeeCount) {
         }
     }
     cout << "Сотрудники отсортированы по фамилии." << endl;
+    cout << endl;
 }
 
 void addEmployee(Employee*& employees, int& employeeCount) {
@@ -120,7 +126,7 @@ void addEmployee(Employee*& employees, int& employeeCount) {
     newEmployees[employeeCount].phone = new char[255];
 
     cout << "Введите фамилию: ";
-    cin.ignore();
+    //cin.ignore();
     cin.getline(newEmployees[employeeCount].surname, 255);
 
     cout << "Введите имя: ";
@@ -142,12 +148,13 @@ void addEmployee(Employee*& employees, int& employeeCount) {
     employeeCount++;
 
     cout << "Сотрудник успешно добавлен." << endl;
+    cout << endl;
 }
 
 void deleteEmployee(Employee*& employees, int& employeeCount) {
     char lastName[255];
     cout << "Введите фамилию сотрудника, которого нужно удалить: ";
-    cin.ignore();
+    //cin.ignore();
     cin.getline(lastName, 255);
 
     for (int i = 0; i < employeeCount; i++) {
@@ -161,13 +168,16 @@ void deleteEmployee(Employee*& employees, int& employeeCount) {
                 }
                 employeeCount--;
                 cout << "Сотрудник успешно удален." << endl;
+                cout << endl;
                 return;
             }
             else {
                 cout << "Удаление отменено." << endl;
+                cout << endl;
                 return;
             }
         }
     }
     cout << "Сотрудник не найден." << endl;
+    cout << endl;
 }

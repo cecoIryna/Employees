@@ -42,6 +42,8 @@ int main() {
         cin >> choice;
         cin.ignore();
 
+        cout << endl;
+
         if (employeeCount == 0) {
             switch (choice) {
             case 1:
@@ -71,8 +73,9 @@ int main() {
             {
                 char lastName[255];
                 cout << "¬ведите фамилию дл€ поиска: ";
-                cin.ignore();
+                //cin.ignore();
                 cin.getline(lastName, 255);
+                cout << endl;
                 searchByLastName(employees, employeeCount, lastName);
             }
             break;
